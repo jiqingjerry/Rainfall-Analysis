@@ -1,27 +1,27 @@
-###CS236 Project
+# CS236 Project
 
-#Jerry Zhu
+### Jerry Zhu
 
-#System Requirements:
+## System Requirements:
 	Java openjdk version "1.8.0_252"
 	Sbt 1.3.12
 	Scala 2.11.12
 	Spark 2.4.5
 
-##Description
+## Description
 The locations dataset contains station information from weather stations across the world. The recordings dataset provides individual recordings for the stations over a 4-year period. The goal of the project is to find out which states in the US have the most stable rainfall. That is, the result should provide the US states ordered (in ascending order) by D, where D is the difference between the two months with the highest and lowest rainfall.
 
 
-#Compiling the code
+### Compiling the code
 	- If you need to compile the code, do 'sbt package', make sure 'build.sbt' and your '.scala' file are in the same folder
 
-#Running the program
+### Running the program
 	- Open a terminal in the direction with the jar file and shell script
 	- Execute run.sh with arguments:
 		- './run.sh [Locations file folder path] [Recordings file folder path] [output folder path]''
 		- **make sure the output doesn't exist before running**
 
-#Quick overview of the steps within the job
+### Quick overview of the steps within the job
 	- Read in location and recording fils into Resilient Distributed Datasets(RDD)
 	- Filter locations RDD to have only US States
 	- Filter recordings RDD that has 99.99 for precipitation, because they are excluded from calculations
@@ -32,9 +32,9 @@ The locations dataset contains station information from weather stations across 
 	- Find the month with the highest and lowest averages for each state
 	- Order states by highest - lowest difference.
 
-#The total runtime of the project is around 75 seconds
+### The total runtime of the project is around 75 seconds
 
-#Details on the more important steps
+### Details on the more important steps
 	- The 'map()' function for RDDs are used the most for this job.
 	- Parsing the data
 		- Use 'map()' function to select only the columns that are needed for the job -> UCAF, CTRY, STATE, STN---, YEARMODA, PRCP
@@ -47,7 +47,7 @@ The locations dataset contains station information from weather stations across 
 		- use 'reduceByKey()' to get max RDD and min RDD, key is '(State)'
 		- 'join()' max RDD and min RDD with max-min to get the difference, 'SortBY()' to sort ascending.
 
-#Dataset Information
+### Dataset Information
 The LOCATIONS dataset is a single .csv file (WeatherStationLocations.csv), containing the metadata for every station across the world. To identify that a station is in the US, you need to look for stations where the “CTRY” field is “US” and the “ST” field is non-empty. Keep in mind that the first row of this file is Header. Here are the fields for this dataset:
 	- USAF = Air Force station ID. May contain a letter in the first position.
 	- WBAN = NCDC WBAN number
