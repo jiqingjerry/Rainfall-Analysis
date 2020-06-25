@@ -11,6 +11,7 @@
 ## Description
 The locations dataset contains station information from weather stations across the world. The recordings dataset provides individual recordings for the stations over a 4-year period. The goal of the project is to find out which states in the US have the most stable rainfall. That is, the result should provide the US states ordered (in ascending order) by D, where D is the difference between the two months with the highest and lowest rainfall.
 
+**Data can be downloaded here: ** https://drive.google.com/file/d/1RliNQH37CXY2nT695-xu-EdGNYI9xV8K/view?usp=sharing
 
 ### Compiling the code
 * If you need to compile the code, do sbt package, make sure 'build.sbt' and your '.scala' file are in the same folder
